@@ -1,0 +1,9 @@
+mount -tdebugfs debugfs /sys/kernel/debug
+
+echo "0" > /sys/kernel/debug/tracing/trace
+echo "function" > /sys/kernel/debug/tracing/current_tracer
+echo "do_page_fault" > /sys/kernel/debug/tracing/set_ftrace_filter
+./hambriento 10
+cat /sys/kernel/debug/tracing/trace > traza.out
+
+umount /sys/kernel/debug
