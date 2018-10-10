@@ -12,6 +12,11 @@ int main(int argc, char *argv[]) {
 	int cpu_to_set;
 	int pid_to_set;
 
+	if (argc != 3) {
+		printf("Usage: %s pid cpu\n", argv[0]);
+		return -1;
+	}
+
 	cpu_to_set = atoi(argv[2]);
 	pid_to_set = atoi(argv[1]);
 	CPU_ZERO(&set);
