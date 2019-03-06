@@ -1,0 +1,37 @@
+# Antes de poder ejecutar este script se necesita:
+
+# 1) Tener el sistema de ficheros sysfs montado
+# 2) Ejecutar mdev -s 
+# 3) Ejecutar "echo /sbin/mdev > /proc/sys/kernel/hotplug"
+# 4) Crear /etc/mdev.conf con la siguiente linea
+#
+# sda	root:disk	660 	=drives/	@/home/mdev_rfs_upgrade
+#
+# Y finalmente insertar el pendrive
+##############################################
+
+
+mount /dev/sda1 /mnt
+
+if [ -x /mnt/RFS_leds.tar ];then
+
+	echo "Detectado nuevo RFS" >> /home/mdev.log
+	echo "Creating a ext2 file system ..." >> /home/mdev.log
+	mkfs.ext2 /dev/mmcblk0p2 >> /home/mdev.log
+	mkdir /mnt2 >> /home/mdev.log
+	echo "Mounting the new file system at /mnt2" >> /home/mdev.log
+	mount /dev/mmcblk0p2 /mnt2 >> /home/mdev.log
+	cd /mnt2
+	echo "Copying new RFS to /mnt2" >> /home/mdev.log
+	tar xvf /mnt/RFS_leds.tar
+	cd /
+	umount /mnt2
+	echo "OK. All DONE" >> /home/mdev.log
+
+else
+	
+	echo "NO hay fichero para el upgrade" >> /home/mdev.log
+fi
+
+
+umount /mnt
