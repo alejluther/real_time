@@ -1,0 +1,5 @@
+all:
+	$(CROSS_COMPILE)gcc -Wall -o hello hello.c
+
+clean:
+	rm hello
