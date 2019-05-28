@@ -9,7 +9,8 @@ all: 				\
     virt_dev_write \
     virt_dev_bad_write \
     virt_dev_ioctl \
-    virt_dev_select 
+    virt_dev_select \
+	gpio_ultra
 
 
 install:
@@ -18,7 +19,8 @@ install:
 	sudo cp virt_dev_write ${INSTALL_DIR}
 	sudo cp virt_dev_bad_write ${INSTALL_DIR}
 	sudo cp virt_dev_ioctl ${INSTALL_DIR}
-	sudo cp ultra_ctrl ${INSTALL_DIR}
+	sudo cp virt_dev_select ${INSTALL_DIR}
+	sudo cp gpio_ultra ${INSTALL_DIR}
 	sudo cp script_trace.sh  /home/piuser/RFS/home/
 
 clean:
