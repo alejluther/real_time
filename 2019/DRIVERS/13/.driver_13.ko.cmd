@@ -1,0 +1,1 @@
+cmd_/home/piuser/DRIVERS/13/driver_13.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/piuser/DRIVERS/13/driver_13.ko /home/piuser/DRIVERS/13/driver_13.o /home/piuser/DRIVERS/13/driver_13.mod.o ;  true
