@@ -1,4 +1,4 @@
-mv /home/piuser/software/u-boot.good /home/piuser/software/u-boot
+mv /home/piuser/software/uboot/u-boot.good /home/piuser/software/uboot/u-boot
 
 rm /home/piuser/software/varios/RFS.tar
 cp /home/piuser/.updates/curso_git/2022/varios/RFS.tar /home/piuser/software/varios/
