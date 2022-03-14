@@ -1,0 +1,15 @@
+diff --git a/include/configs/rpi.h b/include/configs/rpi.h
+index 17cdecd1c3..556fcd00b4 100644
+--- a/include/configs/rpi.h
++++ b/include/configs/rpi.h
+@@ -139,6 +139,10 @@
+ #include <config_distro_bootcmd.h>
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
++	"nfsbootargs=setenv bootargs console=ttyAMA0,115200 earlyprintk root=/dev/nfs ip=192.168.2.23 nfsroot=192.168.2.2:/home/piuser/RFS rw\0" \
++	"ipaddr=192.168.2.23\0" \
++	"serverip=192.168.2.2\0" \
++	"bootcmd=tftp $kernel_addr_r zImage;tftp $fdt_addr bcm2710-rpi-3-b-plus.dtb;run nfsbootargs;bootz $kernel_addr_r - $fdt_addr\0" \
+ 	"dhcpuboot=usb start; dhcp u-boot.uimg; bootm\0" \
+ 	ENV_DEVICE_SETTINGS \
+ 	ENV_MEM_LAYOUT_SETTINGS \
