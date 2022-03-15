@@ -1,0 +1,17 @@
+Hay un problema con el tamaño de RAM disk necesario para montar el RFS basado en initrd. El kernel esta configurado para un tamaño de ramdisk de 4096 bytes y la imagen creada de initrd es mas grande.
+
+La solucion es modificar la configuracion del kernel para aumentar el tamaño hasta 32768. Para esto hay que configurar el kernel cambiando la opcion "Device Drivers -> Block devices -> Default Ram Disk Size". Para esto hay que usar el comando:
+
+make ARCH=arm menuconfig
+
+Y para salir de la configuracion hay que grabar los cambios.
+
+Despues hay que compilar el kernel tal y como se explica en el ejercicio 2:
+
+make ARCH=arm zImage
+
+Y finalmente copiar la imagen del kernel al directorio del tftpboot:
+
+sudo cp arch/arm/boot/zImage /var/lib/tftpboot/
+
+Ahora ya deberia funcionar el montaje del RFS usando el initrd.
