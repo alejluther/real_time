@@ -69,6 +69,7 @@ init_module(void)
 	if (ret) {
 		printk("cdev_add failed\n");
 	   	unregister_chrdev_region(virt_dev_cdev_number, 1);
+    	cdev_del(virt_dev_cdev);
 	}
 
     return 0;
