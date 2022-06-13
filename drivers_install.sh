@@ -1,6 +1,16 @@
-cp -rp /home/piuser/real_time/2019/DRIVERS/13/* /home/piuser/DRIVERS/
-cp -rp /home/piuser/real_time/2019/DRIVERS/14/* /home/piuser/DRIVERS/
-cp -rp /home/piuser/real_time/2019/DRIVERS/17/* /home/piuser/DRIVERS/
+rm /home/piuser/software/kernel/linux/drivers/char/driver_03.*
+cd /home/piuser/software/kernel/linux
+git checkout drivers/char/Makefile
 
-cp -rp /home/piuser/real_time/2019/DRIVERS/tools/Makefile /home/piuser/DRIVERS/tools/
-cp -rp /home/piuser/real_time/2019/DRIVERS/tools/gpio* /home/piuser/DRIVERS/tools/
+make ARCH=arm zImage
+
+sudo cp arch/arm/boot/zImage /var/lib/tftpboot/
+
+cd /home/piuser/.updates/curso_git
+git pull
+
+cp -rp 2019/DRIVERS /home/piuser/
+
+cp  -rp /home/alucero/RFS_BUILDROOT /home/piuser/
+mv /home/piuser/RFS_BUILDROOT /home/piuser/RFS
+rm -rf /home/piuser/RFS/home/*
